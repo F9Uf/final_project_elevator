@@ -26,7 +26,7 @@ module liffClk(
     );
     reg [31:0] counter;
     always @(posedge clkIn) begin
-        if (counter == 300000000) begin // 300-000-000 or 3 second
+        if (counter == 200000000) begin // 200-000-000 or 2 second
             counter <= 0;
             clkOut <= ~clkOut;
         end
