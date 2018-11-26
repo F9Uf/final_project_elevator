@@ -3,3 +3,7 @@
 /final_project_elevator.ip_user_files
 /final_project_elevator.runs
 /final_project_elevator.sim
+
+*.jou
+*.log
+*.str
