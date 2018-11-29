@@ -1,11 +1,11 @@
 `timescale 1ns / 1ps
 module sevenseg(
-    input clk,
+    input clkIn,
     input [2:0] state,
     output reg [6:0] seg
     );
     
-    always @ (posedge clk)
+    always @ (posedge clkIn)
         case (state)
             3'b001: seg = 7'b1111001;
             3'b010: seg = 7'b0100100; //2

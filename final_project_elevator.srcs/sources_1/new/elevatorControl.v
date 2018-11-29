@@ -33,9 +33,11 @@ module elevatorControl(
     liffClk lf(clk, slowClk);
     
     always @ (posedge slowClk) begin
+        if(preFloor == floor1|preFloor == floor2|preFloor == floor3|preFloor == floor4)begin
+            resetButton = 10'b0000000000;
+        end
         if(delay > 0) begin
             delay = delay - 1;
-            resetButton = 10'b0000000000;
         end
         else begin
             if(dir == UP) begin

@@ -7,7 +7,7 @@ module top_module(
     input DO2, DO3, DO4,
        
     output ledUp, ledDown,
-    output [7:0] seg
+    output [6:0] seg
     );
         
     wire in1, in2, in3, in4, reIn1, reIn2, reIn3, reIn4;
