@@ -3,6 +3,6 @@
 ### Final Project wiht Verilog
 
 - [X] Elevator clock
-- [ ] Control
+- [X] Control
 - [ ] Show led
 - [ ] Model
