@@ -7,6 +7,7 @@ module top_module(
     input DO2, DO3, DO4,
        
     output ledUp, ledDown,
+    output [2:0] door,
     output [6:0] seg
     );
         
@@ -16,6 +17,7 @@ module top_module(
     
     wire [2:0] state;
     wire direction;
+    wire delay;
     
     buttonControl
         bc(IN1, IN2, IN3, IN4,
@@ -35,11 +37,12 @@ module top_module(
                 {reIn1, reIn2, reIn3, reIn4,
                 reUo1, reUo2, reUo3,
                 reDo2, reDo3, reDo4},
-            state, direction
+            state, direction, delay
             );
     
 //    display ds();   
     sevenseg ss(clk, state, seg);
     assign ledUp = direction ? 1'b1:1'b0;
     assign ledDown = ~direction ? 1'b1:1'b0;
+    assign door = delay ? 3'b111 : 3'b000;
 endmodule

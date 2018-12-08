@@ -110,12 +110,12 @@ set_property PACKAGE_PIN V13 [get_ports ledUp]
 	#set_property IOSTANDARD LVCMOS33 [get_ports {led[11]}]
 #set_property PACKAGE_PIN P3 [get_ports {led[12]}]
 	#set_property IOSTANDARD LVCMOS33 [get_ports {led[12]}]
-#set_property PACKAGE_PIN N3 [get_ports {led[13]}]
-	#set_property IOSTANDARD LVCMOS33 [get_ports {led[13]}]
-#set_property PACKAGE_PIN P1 [get_ports {led[14]}]
-	#set_property IOSTANDARD LVCMOS33 [get_ports {led[14]}]
-#set_property PACKAGE_PIN L1 [get_ports {led[15]}]
-	#set_property IOSTANDARD LVCMOS33 [get_ports {led[15]}]
+set_property PACKAGE_PIN N3 [get_ports {door[0]}]
+	set_property IOSTANDARD LVCMOS33 [get_ports {door[0]}]
+set_property PACKAGE_PIN P1 [get_ports {door[1]}]
+	set_property IOSTANDARD LVCMOS33 [get_ports {door[1]}]
+set_property PACKAGE_PIN L1 [get_ports {door[2]}]
+	set_property IOSTANDARD LVCMOS33 [get_ports {door[2]}]
 
 
 ##7 segment display

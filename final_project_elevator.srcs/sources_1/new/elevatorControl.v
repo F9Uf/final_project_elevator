@@ -10,7 +10,8 @@ module elevatorControl(
     output reg [9:0] resetButton, //re IN1,...,IN4,UO2,...,UO4,DO1,...,DO4
     
     output [2:0] state,
-    output direction
+    output direction,
+    output door
     );
     // parameter direction
     parameter UP = 1'b1;
@@ -22,11 +23,12 @@ module elevatorControl(
     parameter floor4 = 3'b100;
     
     parameter d = 2;
-    reg dir, delay;
+    reg dir;
+    reg [2:0] delay;
     reg [2:0] preFloor;
     
     initial dir = UP;
-    initial delay = 1'b0;
+    initial delay = 3'b0;
     initial preFloor = floor1;
     
     wire slowClk;
@@ -129,5 +131,5 @@ module elevatorControl(
     
     assign state = preFloor;
     assign direction = dir == UP ? 1'b1 : 1'b0;
-    
+    assign door = delay >0 ? 1'b1 : 1'b0;
 endmodule
