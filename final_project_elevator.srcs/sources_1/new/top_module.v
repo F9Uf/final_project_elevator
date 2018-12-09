@@ -7,7 +7,7 @@ module top_module(
     input DO2, DO3, DO4,
        
     output ledUp, ledDown,
-    output [2:0] door,
+    output [2:0] door, //led door on board
     output [6:0] seg
     );
         

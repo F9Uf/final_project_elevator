@@ -43,6 +43,9 @@ module elevatorControl(
         end
         else begin
             if(dir == UP) begin
+                if(preFloor == floor4) begin
+                    dir = DOWN; // if up to 4-floor change direction to down
+                end
                 // in stop logic
                 if(preFloor == floor1 & (IN1|UO1))begin
                     delay = d;
@@ -71,20 +74,32 @@ module elevatorControl(
                 //in move Up logic
                 if(delay == 0)begin // if not delay
                     if(preFloor == floor1 & (IN2|IN3|IN4|UO2|DO2|UO3|DO3|DO4))begin
-                        preFloor = floor2; //preFloor = preFloor + 1;
+                        preFloor = floor2; //up
                     end
                     else if(preFloor == floor2 & (IN3|IN4|UO3|DO3|DO4))begin
-                        preFloor = floor3;
+                        preFloor = floor3; //up
+                    end
+                    else if(preFloor == floor2 & (IN1|UO1) & (~IN3 & ~IN4 & ~DO3 & ~DO4 & ~UO3))begin //new***
+                        dir = DOWN;
+                        preFloor = floor1; //down
                     end
                     else if(preFloor == floor3 & (IN4|DO4))begin
-                        preFloor = floor4;
+                        preFloor = floor4; //up and change to down;
                         dir = DOWN;
+                    end
+                    else if(preFloor == floor3 & (IN1|IN2|UO1|UO2|DO2) & (~IN4 & ~DO4))begin //new***
+                        dir = DOWN;
+                        preFloor = floor2; //down
                     end
                 end
                 //end move Up logic
             end
             else if(dir == DOWN) begin
-            //  in stop logic
+                if(preFloor == floor1)begin
+                    dir = UP; // if down to 1-floor change direction to up.
+                end
+                
+                //  in stop logic               
                 if(preFloor == floor2 & (IN2|DO2))begin
                     delay = d;
                     resetButton = 10'b0100000100;
@@ -115,8 +130,16 @@ module elevatorControl(
                         preFloor = floor1;
                         dir = UP;
                     end
+                    if(preFloor == floor2 & (IN3|IN4|UO3|DO3|DO4) & (~IN1 & ~UO1))begin //new***
+                        dir = UP;
+                        preFloor = floor3;
+                    end
                     else if(preFloor == floor3 & (IN1|IN2|UO2|DO2|UO1))begin
                         preFloor = floor2;
+                    end
+                    else if(preFloor == floor3 & (IN4|DO4) & (~IN2 & ~IN1 & ~UO2 & ~UO1 & ~DO2))begin //new***
+                        dir = UP;
+                        preFloor = floor4;
                     end
                     else if(preFloor == floor4 & (IN1|IN2|IN3|UO1|UO2|DO2|UO3|DO3) )begin
                         preFloor = floor3;
