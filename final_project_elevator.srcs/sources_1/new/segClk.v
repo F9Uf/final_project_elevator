@@ -1,12 +1,12 @@
 `timescale 1ns / 1ps
 
-module liffClk(
+module segClk(
     input clkIn,
     output reg clkOut
     );
     reg [31:0] counter;
     always @(posedge clkIn) begin
-        if (counter == 100000000) begin // 100-000-000 or 1 second
+        if (counter == 100000) begin // 200-000-000 or 2 second
             counter <= 0;
             clkOut <= ~clkOut;
         end
