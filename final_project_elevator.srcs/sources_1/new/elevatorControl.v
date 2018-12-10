@@ -22,7 +22,7 @@ module elevatorControl(
     parameter floor3 = 3'b011;
     parameter floor4 = 3'b100;
     
-    parameter d = 5;
+    parameter d = 3;
     reg dir;
     reg [5:0] delay;
     reg [2:0] preFloor;

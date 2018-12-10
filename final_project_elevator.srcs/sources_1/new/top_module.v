@@ -10,7 +10,7 @@ module top_module(
     output LU1, LU2, LU3,
     output LD2, LD3, LD4,
     output ledUp, ledDown,
-    output [2:0] door, //led door on board
+    output [5:0] door, //led door on board
     output [7:0] seg,
     output [3:0] an,
     output [6:0] segB
@@ -47,10 +47,13 @@ module top_module(
     
 //    display ds();   
     sevenseg ss(clk, state, seg);
-    segDoor sd(clk, delay, an, segB);
+    
+    sevenseg_board sb(clk, delay, an, segB);
+    
+    doorAnima da(clk, delay, door);
+    
     assign ledUp = direction ? 1'b1:1'b0;
     assign ledDown = ~direction ? 1'b1:1'b0;
-    assign door = delay ? 3'b111 : 3'b000;
     // light btn
     assign LI1 = in1;
     assign LI2 = in2;
